@@ -1,0 +1,6 @@
+    2025-07-06 23:59:53.288 | INFO     | main:get_sql_and_results:23 - User question: List all orders with customer names and dish names
+2025-07-06 23:59:53.288 | INFO     | main:get_sql_and_results:24 - Generated SQL: SELECT u.name AS customer_name, m.name AS dish_name, o.order_date 
+FROM orders o 
+JOIN users u ON o.user_id = u.id 
+JOIN menu_items m ON o.restaurant_id = m.restaurant_id
+2025-07-06 23:59:53.288 | INFO     | main:get_sql_and_results:25 - Result: [{'customer_name': 'Alice', 'dish_name': 'Margherita Pizza', 'order_date': '2024-07-01'}, {'customer_name': 'Bob', 'dish_name': 'Butter Chicken', 'order_date': '2024-07-02'}]

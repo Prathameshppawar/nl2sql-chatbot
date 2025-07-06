@@ -1,0 +1,25 @@
+Table: users
+Columns: id, name, address
+
+Table: restaurants
+Columns: id, name, cuisine
+
+Table: menu_items
+Columns: id, restaurant_id, name, price
+Foreign Key: restaurant_id → restaurants.id
+
+Table: delivery_agents
+Columns: id, name, phone
+
+Table: orders
+Columns: id, user_id, restaurant_id, delivery_agent_id, total_amount, order_date
+Foreign Keys:
+  user_id → users.id
+  restaurant_id → restaurants.id
+  delivery_agent_id → delivery_agents.id
+
+Table: order_items
+Columns: id, order_id, menu_item_id, quantity
+Foreign Keys:
+  order_id → orders.id
+  menu_item_id → menu_items.id
