@@ -29,7 +29,7 @@ Convert natural language questions into SQL queries and run them against a real 
 
 ## 🚀 Running Locally
 
-### 1. Clone and setup env
+### Clone and setup env
 
 ```bash
 git clone https://github.com/Prathameshppawar/nl2sql-chatbot.git
@@ -37,7 +37,7 @@ cd nl2sql-chatbot
 cp .env.example .env  # Add your GROQ_API_KEY
 
 ```
-### 2. Run using `uv`
+### Run using `uv`
 
 ```bash
 uv venv && source .venv/bin/activate
@@ -46,13 +46,39 @@ uvicorn main:app --reload
 ```
 Or:
 
-### 2. Run with 🐋Docker
+### Run with 🐋Docker
 
 ```bash 
 docker-compose up --build
 ```
 
 Visit: http://localhost:8000/docs
+
+
+## 🗃️ Database Schema Overview
+
+The current database simulates a real-world **food delivery system**, containing entities like:
+
+| Table Name       | Description                                  |
+|------------------|----------------------------------------------|
+| `users`          | Stores user/customer profiles                |
+| `restaurants`    | Basic details about restaurants              |
+| `menu_items`     | Menu items offered by restaurants            |
+| `orders`         | Orders placed by users                       |
+| `order_items`    | Individual items in each order               |
+| `delivery_agents`| Info about delivery personnel                |
+
+This schema allows natural language queries such as:
+
+- "List all orders with customer names and dish names"
+- "Show all items ordered by Bob last week"
+- "What is the most popular dish?"
+- "Which delivery agent handled the most orders?"
+- "Total revenue per restaurant in June"
+
+The schema is embedded into the vector database (Chroma) using HuggingFace embeddings and retrieved as context for the LLM.
+
+> 📁 File: `data/schema.txt` contains a textual description of this schema used for grounding.
 
 ### ✅ Example Query
 
@@ -141,7 +167,7 @@ curl -X POST http://localhost:8000/query \
 └── README.md
 ```
 
-### 📝 Notes & Limitations
+## 📝 Notes & Limitations
 > ⚠️ This is a pre-release version and under active development.
 
 - 🚫 Offline Only: The API is currently available only on local environments (localhost). No cloud deployment has been done yet.
