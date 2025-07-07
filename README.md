@@ -183,3 +183,7 @@ curl -X POST http://localhost:8000/query \
 - 🧪 Not Production-Hardened: No async DB pooling, retry policies, or circuit breakers are implemented.
 
 - 📦 Docker Used for Local Packaging Only: While Docker/Compose are set up, images are not pushed to any registry (e.g., DockerHub).
+
+
+## 👨‍💻 Author
+Made with 💻 + ☕ by [Prathamesh Pawar](https://github.com/Prathameshppawar)
